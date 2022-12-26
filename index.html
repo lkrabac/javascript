@@ -26,8 +26,9 @@
 
 </style>
 <body>
+    <button id="btn" style="margin: 3px">Nastav si grid</button>
     <div id="container">
-       
+
     </div>
     <script>
         const container = document.getElementById("container");
@@ -39,6 +40,11 @@
             });
             container.appendChild(square);
         } 
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", (e) => {
+            let velkost = prompt("velkost gridu");
+            console.log(velkost);
+        });
     </script>
 </body>
 </html>
