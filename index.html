@@ -13,6 +13,17 @@
         display: flex;
         flex-wrap: wrap;
     }
+    .square {
+        height: 16px; 
+        width:16px; 
+        border: 1px solid black;
+        
+    }
+
+    .square-painted {
+        background-color: black;
+    }
+
 </style>
 <body>
     <div id="container">
@@ -22,10 +33,12 @@
         const container = document.getElementById("container");
         for(i=0; i < 256; i++) {
             const square = document.createElement("div");
-            square.style.cssText = "height: 16px; width:16px; border: 1px solid black";
+            square.classList.add("square");
+            square.addEventListener("mouseover", (e) => {
+                e.target.classList.add("square-painted");
+            });
             container.appendChild(square);
-        }
-
+        } 
     </script>
 </body>
 </html>
