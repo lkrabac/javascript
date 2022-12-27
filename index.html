@@ -8,8 +8,7 @@
 </head>
 <style>
     #container {
-        border: 1px solid black;
-        width: 288px;
+        width: 60%;
         display: flex;
         flex-wrap: wrap;
     }
@@ -17,33 +16,70 @@
         height: 16px; 
         width:16px; 
         border: 1px solid black;
-        
     }
 
     .square-painted {
         background-color: black;
     }
 
+    .container-wrapper {
+        width: 88.8%;
+        display: flex;
+        justify-content: center;
+        align-items: center;             
+    }
+
+    .btn-wrapper {
+        width: 88.8%;
+        display: flex;
+        justify-content: center;
+    }
+
 </style>
 <body>
-    <button id="btn" style="margin: 3px">Nastav si grid</button>
-    <div id="container">
+    <div class="btn-wrapper"><button id="btn" style="margin: 3px">Nastav si grid</button></div>
 
+    <div class="container-wrapper">
+        <div id="container">
+
+        </div>
     </div>
     <script>
+        let square;
         const container = document.getElementById("container");
-        for(i=0; i < 256; i++) {
-            const square = document.createElement("div");
-            square.classList.add("square");
-            square.addEventListener("mouseover", (e) => {
-                e.target.classList.add("square-painted");
-            });
-            container.appendChild(square);
-        } 
+        window.onload = function() {
+            
+            for(i=0; i < 256; i++) {
+                container.style.cssText = "width:"+(16*18)+"px";
+                square = document.createElement("div");
+
+                square.classList.add("square");
+                square.addEventListener("mouseover", (e) => {
+                    e.target.classList.add("square-painted");
+                });
+
+                container.appendChild(square);
+            }
+            console.log("zaciatok"); 
+        };
+
         const btn = document.getElementById("btn");
+
         btn.addEventListener("click", (e) => {
-            let velkost = prompt("velkost gridu");
-            console.log(velkost);
+            container.innerHTML = '';
+            let velkost = prompt("Velkost gridu (v riadkoch)");
+            container.style.cssText = "width:"+(velkost*18)+"px";
+            for(i=0; i < (velkost*velkost); i++) {
+
+                square = document.createElement("div");
+                
+                square.classList.add("square");
+                square.addEventListener("mouseover", (e) => {
+                    e.target.classList.add("square-painted");
+                });
+                container.appendChild(square);
+            } 
+            
         });
     </script>
 </body>
